@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="SemiColonWeb" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/COCA.css" type="text/css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>American Sign Language Translator | COCA</title>
+  </head>
+
+  <body class="stretched side-push-panel">
+    <!-- Document Wrapper
+	============================================= -->
+    <div id="wrapper" class="clearfix">
+      <!-- Header
+		============================================= -->
+      <header id="header" class="header-size-md">
+        <div id="logo" class="me-lg-0">
+          <a class="standard-logo"
+            ><img src="images/logo.png" alt="COCA Logo"
+          /></a>
+        </div>
+
+        <ul class="menu-container">
+          <li class="menu-item current">
+            <a class="menu-link" href="COCA_home.html">
+              <div>Home</div>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a class="menu-link" href="COCA_home.html#a">
+              <div>About</div>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a class="menu-link" href="COCA_translator.html">
+              <div>ASL Translator</div>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a class="menu-link">
+              <div>Sefl-learning</div>
+            </a>
+          </li>
+
+          <li class="menu-item">
+            <a class="menu-link" href="COCA_translator.html#footer">
+              <div>Contact</div>
+            </a>
+          </li>
+        </ul>
+
+        <div class="rounded-lg bg-white-200 p-0">
+          <div class="flex">
+            <div
+              class="flex w-10 resize-items-center rounded-tl-lg rounded-bl-lg border-r border-gray-200 bg-white p-3"
+            >
+              <svg
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+                class="pointer-events-none absolute w-4 fill-gray-500 transition"
+              >
+                <path
+                  d="M16.72 17.78a.75.75 0 1 0 1.06-1.06l-1.06 1.06ZM9 14.5A5.5 5.5 0 0 1 3.5 9H2a7 7 0 0 0 7 7v-1.5ZM3.5 9A5.5 5.5 0 0 1 9 3.5V2a7 7 0 0 0-7 7h1.5ZM9 3.5A5.5 5.5 0 0 1 14.5 9H16a7 7 0 0 0-7-7v1.5Zm3.89 10.45 3.83 3.83 1.06-1.06-3.83-3.83-1.06 1.06ZM14.5 9a5.48 5.48 0 0 1-1.61 3.89l1.06 1.06A6.98 6.98 0 0 0 16 9h-1.5Zm-1.61 3.89A5.48 5.48 0 0 1 9 14.5V16a6.98 6.98 0 0 0 4.95-2.05l-1.06-1.06Z"
+                ></path>
+              </svg>
+            </div>
+
+            <input
+              type="text"
+              class="w-full max-w-[160px] bg-white pl-2 text-base font-semibold outline-5"
+              placeholder=""
+              id=""
+            />
+
+            <input
+              type="button"
+              value="Search"
+              class="bg-blue-500 p-2 rounded-tr-lg rounded-br-lg text-white font-semibold hover:bg-blue-800 transition-colors"
+            />
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section id="blank">
+          <div class="cry"></div>
+        </section>
+
+        <section id="titledetect">
+          <div class="titledetect">
+            <h1 class="font-secondary">American Sign Language Translator</h1>
+          </div>
+        </section>
+
+        <section id="main">
+          <div class="canvasbutton">
+            <div class="btncameravideo">
+              <div>
+                <input id="checkbox" type="checkbox" />
+
+                <label id="cameraButton" class="switch" for="checkbox">
+                  <div class="powersign"><img src="images/camera.png" /></div>
+                </label>
+              </div>
+
+              <div class="or">or</div>
+
+              <div class="btnvideo">
+                <input type="file" id="fileInput" class="file-input" />
+
+                <button class="cssbuttons-io-button" onclick="activateInput()">
+                  <svg
+                    viewBox="0 0 640 512"
+                    fill="white"
+                    height="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                    ></path>
+                  </svg>
+                  <span>Upload video</span>
+                </button>
+
+                <button id="videoButton" class="button type1">
+                  <span class="btn-txt">Recognize from video</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="khungvideo">
+              <canvas id="video-canvas" width="640" height="480"></canvas>
+            </div>
+          </div>
+
+          <div class="optionbtn">
+            <div class="options-container">
+              <div class="select-model">
+                <h5>You sign by:</h5>
+                <fieldset id="model" class="radio">
+                  <input
+                    name="model"
+                    id="RightHand"
+                    type="radio"
+                    value="right"
+                    checked=""
+                  />
+                  <label for="RightHand">Right hand</label>
+                  <input name="model" id="LeftHand" type="radio" value="left" />
+                  <label for="LeftHand">Left hand</label>
+                </fieldset>
+              </div>
+
+              <!-- Change the speed. -->
+              <div class="select-threshold">
+                <h5>Select Threshold:</h5>
+
+                <fieldset id="threshold" class="radio">
+                  <input name="threshold" id="slow" type="radio" value="7" />
+                  <label for="slow">Slow</label>
+
+                  <input
+                    name="threshold"
+                    id="medium"
+                    type="radio"
+                    value="5"
+                    checked=""
+                  />
+                  <label for="medium">Medium</label>
+
+                  <input name="threshold" id="fast" type="radio" value="3" />
+                  <label for="fast">Fast</label>
+                </fieldset>
+              </div>
+
+              <!-- Implement changes -->
+              <div class="change">
+                <button
+                  class="cssbuttons-io-button"
+                  id="changeoptionsButton"
+                  onclick="changeOptions()"
+                >
+                  <span>Change Options</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="card">
+              <p>Your text:</p>
+
+              <div id="accumulatedWord"></div>
+
+              <div>
+                <textarea id="sentence_word1" rows="2" cols="40"> </textarea
+                ><br />
+
+                <textarea id="sentence_word2" rows="2" cols="40"></textarea
+                ><br />
+              </div>
+
+              <div class="speech">
+                <div class="optionspeech">
+                  <h5>Please select a voice:</h5>
+
+                  <fieldset id="voiceSelect" class="radio">
+                    <input
+                      name="voiceSelect"
+                      id="female"
+                      type="radio"
+                      value="Google UK English Female"
+                      checked=""
+                    />
+                    <label for="female">Female</label>
+
+                    <input
+                      name="voiceSelect"
+                      id="male"
+                      type="radio"
+                      value="Google UK English Male"
+                    />
+                    <label for="male">Male</label>
+                  </fieldset>
+                </div>
+
+                <div class="readButton">
+                  <button id="readButton" class="Btn5">
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="volume-svg"
+                    >
+                      <polygon
+                        points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"
+                      ></polygon>
+                      <path
+                        d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"
+                      ></path>
+                    </svg>
+                  </button>
+
+                  <button
+                    class="delete-button"
+                    onclick="clearAccumulatedWord()"
+                  >
+                    <svg class="delete-svgIcon" viewBox="0 0 448 512">
+                      <path
+                        d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer
+		============================================= -->
+      <footer id="footer" class="border-0" style="background-color: #ffffff">
+        <div class="box">
+          <!-- Footer Widgets
+				============================================= -->
+          <div class="footer-widgets-wrap">
+            <div class="row">
+              <div id="logo1">
+                <a class="standard-logo"
+                  ><img src="images/logo.png" alt="COCA Logo"
+                /></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="widget1">
+              <div class="ic">
+                <a class="icon"
+                  ><img src="images/vitri.png" alt="COCA Logo"
+                /></a>
+                <h4>Address:</h4>
+              </div>
+
+              <ul>
+                <li>
+                  <a
+                    >232/6 Vo Thi Sau Str, District 3, <br />
+                    Ho Chi Minh City, Vietnam</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="widget">
+              <div class="ic">
+                <a class="icon"
+                  ><img src="images/call.png" alt="COCA Logo"
+                /></a>
+                <h4>Tel:</h4>
+              </div>
+              <li><a>+9229341037</a></li>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="widget">
+              <div class="ic">
+                <a class="icon"
+                  ><img src="images/time.png" alt="COCA Logo"
+                /></a>
+                <h4>Response hours:</h4>
+              </div>
+              <li><a> 8 to 20</a></li>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="widget">
+              <div class="ic">
+                <a class="icon"
+                  ><img src="images/mail.png" alt="COCA Logo"
+                /></a>
+                <h4>Email:</h4>
+              </div>
+              <li><a>COCA@service.com</a></li>
+            </div>
+          </div>
+        </div>
+
+        <div id="copyrights" style="background-color: #fff">
+          <div class="foot">
+            <div class="w-100">
+              <span>Copyrights &copy; 2022 COCA</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- JavaScripts
+	============================================= -->
+    <script src="js/jquery.js"></script>
+  </body>
+</html>
