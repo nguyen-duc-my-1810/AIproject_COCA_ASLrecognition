@@ -403,8 +403,8 @@ def augmentation_implementation_create_testdata(data):
         for i in range(len(selected_change_samples)):
             divided_samples = selected_change_samples[i]
 
-            ratio_x_negative = random.uniform(-0.99, -0.9)
-            ratio_y_negative = random.uniform(-0.99, -0.9)
+            ratio_x_negative = random.uniform(1.01, 1.1)
+            ratio_y_negative = random.uniform(1.01, 1.1)
 
             data_change_ratio = Augmentation.change_hand_ratio(divided_samples, ratio_x_negative, ratio_y_negative)
             data_change_ratio_final.append(data_change_ratio)   
