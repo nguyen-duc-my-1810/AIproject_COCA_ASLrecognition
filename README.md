@@ -1,1 +1,31 @@
-# AIproject_COCA_ASLrecognition
+# [AI Project]_[COCA]_ASL recognition
+
+## 1. Introduction
+
+By April 16, 2023, records showed 70 million people globally rely on sign language due to hearing impairments, with 500,000 using ASL in the US. Despite hearing challenges, the deaf community shares desires for social interaction, education, and work, making ASL vital. However, lack of ASL awareness creates a barrier for integration. Finding qualified ASL interpreters is difficult and costly, affecting effective communication and opportunities. This barrier limits education, job prospects, and access to healthcare, leading to increased feelings of isolation and mental health challenges among the deaf.
+
+Therefore, we have developed a system utilizing a deep neural network to recognize ASL, aiding the deaf community in quick and efficient communication. This system employs an LSTM as the primary model, accompanied by supportive features such as auto spell-check, text generation, text-to-speech conversion, and video recognition. On the other hand, the system's GUI utilizes HTMS language, CSS, as well as JavaScript for implementation.
+
+## 2. AI solutions
+### 2.1 Data collection
+The dataset for the project was sourced from Kaggle, comprising hand gestures representing 26 alphabetical characters, including symbols for "NOTHING," "DEL," and "SPACE," totaling around 223,000 images. Additional datasets covered hand signs for numbers 0 to 10, totaling about 20,000 images. To ensure data quality, Mediapipe was used to filter out images with poor resolution or lighting issues, resulting in 39 folders containing approximately 147,000 usable images of letters and numbers.
+Mediapipe Handlandmarker was employed to recognize 21 landmarks on the hand, converting them into XYZ coordinate data, with normalization and depth referencing from the wrist. Augmentation techniques were applied to enhance dataset diversity by altering perspectives, hand sizes, and introducing fluctuations in landmark coordinates. After augmentation, the training dataset expanded to 301,200 data points per hand, and similar transformations were applied to the test data. Subsequently, the data was prepared by splitting it into data and labels, converting it into arrays, reshaping it, and encoding labels for effective model learning.
+### 2.2 Architecture and model building
+
+For sign language recognition, we developed a deep neural network using LSTM and Dense layers. KerasTuner aided in constructing this architecture, employing Bayesian optimization to find optimal neuron counts and learning rates. The search process ran 20 times across 10 epochs, using EarlyStopping with patience=2 to ensure efficient model learning.
+
+Following the search, the best architecture was identified (Figure 1). Subsequently, we retrained the model on two datasets—one for each hand—to create two comprehensive models. The retraining involved 50 epochs and EarlyStopping with patience=5 to fine-tune the models for improved performance.
+### 2.3 Core feature
+The main feature of the system is real-time sign language recognition from the user's camera input. Upon receiving images from the user's camera, the model utilizes Mediapipe for sign language detection and conversion into coordinates. Subsequently, this data is processed and used to predict characters. When these characters reach a certain frequency threshold, based on user preferences, they are translated into text and displayed on the screen.
+### 2.4 Supporting features
+In addition to its character recognition feature for sign language, the system also incorporates additional functionality to support user expression. The first feature involves automatic spell checking: it utilizes the correct() method from the TextBlob library, triggered after each instance of the user employing a space character. The second feature involves text generation using OpenAI's API by sending a prompt in the format "Complete the sentence: {keyword}," receiving a complete sentence in response, and then displaying it to the user. The third feature entails speech synthesis, utilizing the gTTS library to convert text to speech, enabling users to use their device's voice for efficient communication. Lastly, the system includes video recognition functionality, wherein a video is processed frame by frame similar to data from a camera, facilitating interpretation.
+### 2.5  Graphical User Interface (GUI)
+The system's GUI is built using HTML and CSS, employing FastAPI and WebSocket to connect with the backend. For video data, it encodes image data into base64 on the backend and transmits it through WebSocket. The frontend receives and stores this data, creating an image Blob using the image/jpeg type, and generates a temporary URL to display the image. Text data is stored in a dictionary format and sent as JSON through the WebSocket connection.
+## 3. Results
+Accuracy: When tested with the test dataset, the system's accuracy reaches 95.47%. The team also conducted accuracy validation by running the system directly, comparing the percentage of match between the recognized output and the original sentence for 100 trials, with the lowest accuracy recorded at 70% and the highest at 100%.
+F1-score: The system's F1-score achieved is 95%.
+Time Response: The time to receive and display one character on the screen ranges from 0.5s to 1s, with an average of 8s for a sentence consisting of 5 words to be processed and displayed.
+## 4. Conclusion and future work
+In summary, a real-time sign language recognition system that converts sign language into text and speech has been developed. With an accuracy of up to 95%, the project has demonstrated proficiency in recognizing and converting sign language into text. The system's precise conversion of sign language into text has significantly facilitated more natural and accessible communication for both the deaf and those unfamiliar with sign language.
+In the future, additional sign language data (such as Vietnamese sign language) may be incorporated to enhance the system's capability for broader recognition, catering to a larger user base. Furthermore, the dataset can be augmented by identifying additional landmarks from faces, arms, and body postures to improve the model's accuracy and recognition capabilities. Transformer models could also be employed for future research endeavors. We aim to develop a feature that converts text and speech into sign language for the model.
+
