@@ -39,7 +39,7 @@ file_path = "D:\\[COCA]_Demo\HTML\\Index_to_letters.json"
 labels_dict = reversed_json(file_path=file_path)
 
 # Use OpenAI API
-api_key = "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" #!!!!! Thay thành trống
+api_key = "sk-XXX" # Replace with your API key
 openai.api_key = api_key
 
 system_prompt = (
