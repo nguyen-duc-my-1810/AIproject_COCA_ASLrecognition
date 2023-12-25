@@ -14,11 +14,11 @@ import tensorflow.keras.backend as K
 
 K.clear_session()
 
-right_hand_landmarks = pickle.load(open("D:\\[COCA]_ASL_recognition\Model\\right_hand_data.pickle", 'rb'))
+right_hand_landmarks = pickle.load(open("../Data_preprocessing/right_hand_data.pickle", 'rb'))
 right_hand_data = right_hand_landmarks['data']
 right_hand_labels = right_hand_landmarks['labels']
 
-left_hand_landmarks = pickle.load(open("D:\\[COCA]_ASL_recognition\Model\\left_hand_data.pickle", 'rb'))
+left_hand_landmarks = pickle.load(open("../Data_preprocessing/left_hand_data.pickle", 'rb'))
 left_hand_data = left_hand_landmarks['data']
 left_hand_labels = left_hand_landmarks['labels']
 
@@ -65,18 +65,18 @@ right_data_val, right_labels_val = preprocessing_training(right_data_val, right_
 
 callbacks_for_search = [
     EarlyStopping(monitor='val_accuracy', patience=2),
-    ModelCheckpoint(filepath='D:\\[COCA]_ASL_recognition\Model\\LSTM_parameter\\ModelCheckpoint\\model.{epoch:02d}-{val_loss:.2f}.h5'),
-    TensorBoard(log_dir='D:\\[COCA]_ASL_recognition\Model\\LSTM_parameter\\TensorBoard_search'),
+    ModelCheckpoint(filepath='../Train_and_test/LSTM_parameter\\ModelCheckpoint\\model.{epoch:02d}-{val_loss:.2f}.h5'),
+    TensorBoard(log_dir='../Train_and_test/LSTM_parameter\\TensorBoard_search'),
 ]
 
 callbacks_for_right_train = [
     EarlyStopping(monitor='accuracy', patience=5),
-    TensorBoard(log_dir='D:\\[COCA]_ASL_recognition\Model\\LSTM_parameter\\TensorBoard_right_train'),
+    TensorBoard(log_dir='../Train_and_test/LSTM_parameter\\TensorBoard_right_train'),
 ]
 
 callbacks_for_left_train = [
     EarlyStopping(monitor='accuracy', patience=5),
-    TensorBoard(log_dir='D:\\[COCA]_ASL_recognition\Model\\LSTM_parameter\\TensorBoard_left_train'),
+    TensorBoard(log_dir='../Train_and_test/LSTM_parameter\\TensorBoard_left_train'),
 ]
 
 
@@ -139,7 +139,7 @@ tuner = keras_tuner.BayesianOptimization(
     max_trials=20,
     executions_per_trial=1,
     overwrite=True,
-    directory="D:\\[COCA]_ASL_recognition\Model\\LSTM_parameter",
+    directory="../Train_and_test/LSTM_parameter",
     project_name="[COCA]_ASL_recognition",
 )
 
@@ -163,5 +163,5 @@ left_hand_model = build_model(best_hps[0])
 left_hand_model.summary()
 left_hand_model.fit(x=left_hand_data, y=left_hand_labels, epochs=50, callbacks=callbacks_for_left_train)
 
-right_hand_model.save('D:\\[COCA]_ASL_recognition\Model\\right_hand_model.h5')
-left_hand_model.save('D:\\[COCA]_ASL_recognition\Model\\left_hand_model.h5')
+right_hand_model.save('../Train_and_test/right_hand_model.h5')
+left_hand_model.save('../Train_and_test/left_hand_model.h5')

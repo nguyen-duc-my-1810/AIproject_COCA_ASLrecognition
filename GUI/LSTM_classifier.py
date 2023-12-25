@@ -18,8 +18,8 @@ from textblob import TextBlob
 
 
 # Load model and hand tracking
-right_hand_model = load_model("D:\\[COCA]_Demo\HTML\\right_hand_model.h5")
-left_hand_model = load_model("D:\\[COCA]_Demo\HTML\\left_hand_model.h5")
+right_hand_model = load_model("../GUI/right_hand_model.h5")
+left_hand_model = load_model("../GUI/left_hand_model.h5")
 model = right_hand_model #Default
 
 mp_hands = mp.solutions.hands
@@ -35,7 +35,7 @@ def reversed_json(file_path):
     labels_dict = [reversed_data[i] for i in range(len(reversed_data))]
     return labels_dict
 
-file_path = "D:\\[COCA]_Demo\HTML\\Index_to_letters.json"
+file_path = "../GUI/Index_to_letters.json"
 labels_dict = reversed_json(file_path=file_path)
 
 # Use OpenAI API
@@ -96,7 +96,7 @@ app.add_middleware(
 
 @app.get("/")
 async def get():
-    return HTMLResponse(content=open("D:\\[COCA]_Demo\HTML\\COCA.html").read())
+    return HTMLResponse(content=open("../GUI/COCA.html").read())
 
 # Changing the model
 @app.websocket("/model")
@@ -479,7 +479,7 @@ async def websocket_video(websocket: WebSocket):
                 stop_video = False 
                 # file_data = await websocket.receive_text()
                 # file_data_dict = json.loads(file_data)
-                video_path = "D:\\[COCA]_Demo\HTML\\video_test.mp4"
+                video_path = "../GUI/video_test.mp4"
 
                 await process_video(websocket)
             else:
