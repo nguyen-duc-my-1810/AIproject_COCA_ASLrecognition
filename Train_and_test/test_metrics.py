@@ -8,8 +8,8 @@ from keras.models import load_model
 from sklearn.metrics import accuracy_score, f1_score
 from sklearn.metrics import classification_report
 
-right_hand_model = load_model("D:\\[COCA]_ASL_recognition\Model\\right_hand_model.h5")
-right_hand_landmarks = pickle.load(open("D:\\[COCA]_ASL_recognition\Model\\right_hand_test_data.pickle", "rb"))
+right_hand_model = load_model("../Train_and_test/right_hand_model.h5")
+right_hand_landmarks = pickle.load(open("../Data_preprocessing/right_hand_test_data.pickle", "rb"))
 
 right_hand_data = right_hand_landmarks['data']
 right_hand_labels = right_hand_landmarks['labels']
@@ -68,7 +68,7 @@ for label in unique_labels:
     accuracy = accuracy_score(true_labels[indices], predicted_labels[indices])  
     accuracy_per_label[label] = accuracy  
 
-file_path = "D:\\[COCA]_ASL_recognition\\Model\\Index_to_letters.json"
+file_path = "../Train_and_test/Index_to_letters.json"
 with open(file_path, 'r') as json_file:
     data = json.load(json_file)
 reversed_data = {v: k for k, v in data.items()}
