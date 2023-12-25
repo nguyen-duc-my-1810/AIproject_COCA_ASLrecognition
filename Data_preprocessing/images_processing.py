@@ -38,8 +38,8 @@ def move_images_with_landmarks(input_directory, output_directory, limit_per_fold
                     shutil.copyfile(source_image_path, destination_image_path)
                     count += 1  
 
-input_test_directory = "D:\\New_data_ASL\\asl_alphabet_train"
-output_train_directory = "D:\\[COCA]_ASL_recognition\Model\\right_hand_images"
+input_test_directory = "../asl_images/asl_alphabet_train"
+output_train_directory = "../asl_images/right_hand_images"
 
 move_images_with_landmarks(input_test_directory, output_train_directory)
 
@@ -54,8 +54,8 @@ def flip_images(input_directory, output_directory):
             flipped_img = cv2.flip(img, 1) 
             cv2.imwrite(destination_image_path, flipped_img)
 
-input_directory = "D:\\[COCA]_ASL_recognition\Model\\right_hand_images"
-output_directory = "D:\\[COCA]_ASL_recognition\Model\\left_hand_images"
+input_directory = "../asl_images/right_hand_images"
+output_directory = "../asl_images/left_hand_images"
 
 flip_images(input_directory, output_directory)
 
@@ -107,10 +107,10 @@ def create_dataset(img_path, pickle_path):
     pickle.dump({'data': data, 'labels': labels}, f)
     f.close()
 
-right_hand_img = "D:\\[COCA]_ASL_recognition\Model\\right_hand_images"
-right_hand_data = "D:\\[COCA]_ASL_recognition\\Model\\right_hand_data.pickle"
-lef_hand_img = "D:\\[COCA]_ASL_recognition\Model\\left_hand_images"
-left_hand_data = "D:\\[COCA]_ASL_recognition\\Model\\left_hand_data.pickle"
+right_hand_img = "../asl_images/right_hand_images"
+right_hand_data = "../Data_preprocessing/right_hand_data.pickle"
+lef_hand_img = "../asl_images/left_hand_images"
+left_hand_data = "../Data_preprocessing/left_hand_data.pickle"
 
 create_dataset(right_hand_img, right_hand_data)
 create_dataset(lef_hand_img, left_hand_data)
