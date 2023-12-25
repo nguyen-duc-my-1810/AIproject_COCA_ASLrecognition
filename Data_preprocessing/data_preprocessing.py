@@ -5,11 +5,11 @@ import random
 
 import Augmentation
 
-data_right_hand = pickle.load(open("D:\\[COCA]_ASL_recognition\Model\\new_data.pickle", 'rb'))
+data_right_hand = pickle.load(open("../Data_preprocessing/new_data.pickle", 'rb'))
 data_right_hand = data_right_hand
 data_right_hand_for_test = data_right_hand
 
-data_left_hand = pickle.load(open("D:\\[COCA]_ASL_recognition\Model\\flip_data.pickle", 'rb'))
+data_left_hand = pickle.load(open("../Data_preprocessing/flip_data.pickle", 'rb'))
 data_left_hand = data_left_hand
 data_left_hand_for_test = data_left_hand
 
@@ -277,12 +277,12 @@ def augmentation_implementation(data):
     return data
 
 right_hand_data = augmentation_implementation(data_right_hand)
-right_hand_path = "D:\\[COCA]_ASL_recognition\\Model\\right_hand_data.pickle"  
+right_hand_path = "../Data_preprocessing/right_hand_data.pickle"  
 with open(right_hand_path, 'wb') as file:
     pickle.dump(right_hand_data, file)
 
 left_hand_data = augmentation_implementation(data_left_hand)
-left_hand_path = "D:\\[COCA]_ASL_recognition\\Model\\left_hand_data.pickle"  
+left_hand_path = "../Data_preprocessing/left_hand_data.pickle"  
 with open(left_hand_path, 'wb') as file:
     pickle.dump(left_hand_data, file)
 
@@ -468,12 +468,12 @@ def augmentation_implementation_create_testdata(data):
 
 
 right_hand_test_data = augmentation_implementation_create_testdata(data_right_hand_for_test)
-right_hand_test_path = "D:\\[COCA]_ASL_recognition\\Model\\right_hand_test_data.pickle"  
+right_hand_test_path = "../Data_preprocessing/right_hand_test_data.pickle"  
 with open(right_hand_test_path, 'wb') as file:
     pickle.dump(right_hand_test_data, file)
 
 left_hand_test_data = augmentation_implementation_create_testdata(data_left_hand_for_test)
-left_hand_test_path = "D:\\[COCA]_ASL_recognition\\Model\\left_hand_test_data.pickle"  
+left_hand_test_path = "../Data_preprocessing/left_hand_test_data.pickle"  
 with open(left_hand_test_path, 'wb') as file:
     pickle.dump(left_hand_test_data, file)
 
